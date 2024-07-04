@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Registro de Usuario</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <!-- Estilos CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <script>
         function showCategoryComment() {
             var category = document.getElementById("category").value;
@@ -18,38 +24,38 @@
     </script>
 </head>
 <body>
-    <header>
-        <h1>Registro de Usuario</h1>
-    </header>
     <main>
-        <form action="php/register_user.php" method="post">
-            <label for="id_card">Cédula de Identidad y/o RUC:</label>
-            <input type="text" id="id_card" name="id_card" required>
-            <label for="name">Nombre del Local y/o Empresa:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="surname">Nombre y Apellido:</label>
-            <input type="text" id="surname" name="surname" required>
-            <label for="phone">Número de Teléfono:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <label for="category">Categoría:</label>
-            <select id="category" name="category" onchange="showCategoryComment()" required>
-                <option value="Gastronomía">Gastronomía</option>
-                <option value="Venta">Venta</option>
-                <option value="Artesanía">Artesanía</option>
-                <option value="Juegos">Juegos</option>
-                <option value="Tragos">Tragos</option>
-                <option value="Empresarial">Empresarial</option>
-                <option value="Otros">Otros</option>
-            </select>
-            <div id="category_comment" style="display: none;">
-                <label for="category_comment_text">Especificar Categoría:</label>
-                <textarea id="category_comment_text" name="category_comment"></textarea>
-            </div>
-            <button type="submit">Registrar</button>
-        </form>
+        <article>
+            <section>
+                <form action="php/register_user.php" method="post" id="register">
+                    <h1>Registrate</h1>
+
+                    <input type="text" id="id_card" name="id_card" placeholder="Cédula de Identidad y/o RUC" required><br/>
+                    <input type="text" id="name" name="name" placeholder="Nombre del Local y/o Empresa" required><br/>
+                    <input type="text" id="surname" name="surname" placeholder="Nombre y Apellido" required><br/>
+                    <input type="tel" id="phone" name="phone" placeholder="Número de Teléfono" required><br/>
+                    <select id="category" name="category" onchange="showCategoryComment()" required>
+                        <option value="Gastronomía">Gastronomía</option>
+                        <option value="Venta">Venta</option>
+                        <option value="Artesanía">Artesanía</option>
+                        <option value="Juegos">Juegos</option>
+                        <option value="Tragos">Tragos</option>
+                        <option value="Empresarial">Empresarial</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                    <div id="category_comment" style="display: none;">
+                        <textarea id="category_comment_text" name="category_comment" placeholder="Especificar Categoría"></textarea>
+                    </div><br/>
+                    <button type="submit">Registrar</button>
+                    <button type="reset">Limpiar</button>
+
+                    <p>¿Ya tienes cuenta?</p>
+                    <p>
+                        <a href="index.html">Inicia Sesión</a>
+                    </p>
+                </form>
+            </section>
+        </article>
     </main>
-    <footer>
-        <p>&copy; 2024 Sistema de Stand</p>
-    </footer>
 </body>
 </html>
