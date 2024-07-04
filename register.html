@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Registro de Usuario</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/register.css" />
+    <title>Sign in & Sign up Form</title>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('.container').classList.add('sign-up-mode');
+        });
+
         function showCategoryComment() {
             var category = document.getElementById("category").value;
             var commentBox = document.getElementById("category_comment");
@@ -21,41 +20,74 @@
                 commentBox.style.display = "none";
             }
         }
+
+        function validateForm() {
+            var termsCheckbox = document.getElementById("terms");
+            if (!termsCheckbox.checked) {
+                alert("Debes aceptar los términos y condiciones para registrar el stand.");
+                return false;
+            }
+            return true;
+        }
     </script>
 </head>
 <body>
-    <main>
-        <article>
-            <section>
-                <form action="php/register_user.php" method="post" id="register">
-                    <h1>Registrate</h1>
 
-                    <input type="text" id="id_card" name="id_card" placeholder="Cédula de Identidad y/o RUC" required><br/>
-                    <input type="text" id="name" name="name" placeholder="Nombre del Local y/o Empresa" required><br/>
-                    <input type="text" id="surname" name="surname" placeholder="Nombre y Apellido" required><br/>
-                    <input type="tel" id="phone" name="phone" placeholder="Número de Teléfono" required><br/>
-                    <select id="category" name="category" onchange="showCategoryComment()" required>
-                        <option value="Gastronomía">Gastronomía</option>
-                        <option value="Venta">Venta</option>
-                        <option value="Artesanía">Artesanía</option>
-                        <option value="Juegos">Juegos</option>
-                        <option value="Tragos">Tragos</option>
-                        <option value="Empresarial">Empresarial</option>
-                        <option value="Otros">Otros</option>
-                    </select>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="php/register_user.php" method="post" class="sign-up-form" onsubmit="return validateForm()">
+                    <h2 class="title">Registro de Stand</h2>
+                    <div class="input-field">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="id_card" name="id_card" placeholder="Cédula de Identidad y/o RUC" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-store"></i>
+                        <input type="text" id="name" name="name" placeholder="Nombre del Local y/o Empresa" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="surname" name="surname" placeholder="Nombre y Apellido" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" name="phone" placeholder="Número de Teléfono" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-list"></i>
+                        <select id="category" name="category" onchange="showCategoryComment()" required>
+                            <option value="Gastronomía">Gastronomía</option>
+                            <option value="Venta">Venta</option>
+                            <option value="Artesanía">Artesanía</option>
+                            <option value="Juegos">Juegos</option>
+                            <option value="Tragos">Tragos</option>
+                            <option value="Empresarial">Empresarial</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
                     <div id="category_comment" style="display: none;">
                         <textarea id="category_comment_text" name="category_comment" placeholder="Especificar Categoría"></textarea>
-                    </div><br/>
-                    <button type="submit">Registrar</button>
-                    <button type="reset">Limpiar</button>
-
-                    <p>¿Ya tienes cuenta?</p>
-                    <p>
-                        <a href="index.html">Inicia Sesión</a>
-                    </p>
+                    </div>
+                    <div class="input-field" style="display: flex; align-items: center;">
+                        <input type="checkbox" id="terms" name="terms" required />
+                        <label for="terms" style="margin-left: 10px;">Acepto los términos y condiciones del registro de stand</label>
+                    </div>
+                    <input type="submit" class="btn" value="Sign up" />
                 </form>
-            </section>
-        </article>
-    </main>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <img src="img/log.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+                <img src="images/register.svg" class="image" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
